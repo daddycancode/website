@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		link(rel="stylesheet" href="/login.css")
+		link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css")
+		title Login
+	body
+		.login
+			h1 Login
+			if message
+				p #{message}
+			form(action='/auth' method='POST')
+				label(for='username')
+					i.fas.fa-user
+				input(type='text' name='username' placeholder='Username' id='username' required)
+				label(for='password')
+					i.fas.fa-lock
+				input(type='password' name='password' placeholder='Password' id='password' required)
+				input(type='submit' value='Login')
