@@ -10,7 +10,7 @@ html(lang='en')
 			h1 Login
 			if message
 				p #{message}
-			form(action='/auth' method='POST')
+			form(action='/login' method='POST')
 				label(for='username')
 					i.fas.fa-user
 				input(type='text' name='username' placeholder='Username' id='username' required)

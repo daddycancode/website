@@ -1,3 +1,13 @@
 body {
-    background-color: #1bff13;
+    background-color: #121212;
+    color: #eee
+}
+
+a {
+    color: #eee;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: red;
 }

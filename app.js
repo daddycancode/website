@@ -42,7 +42,7 @@ app.get('/login', (request, response) => {
 	}
 });
 
-app.post('/auth', (request, response) => {
+app.post('/login', (request, response) => {
 	let username = request.body.username;
 	let password = request.body.password;
 	if (username && password) {

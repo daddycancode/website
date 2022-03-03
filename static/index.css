@@ -1,3 +1,41 @@
-body {
-    background-color: #efff13;
+html, body {
+    background-color: #121212;
+    color: #eee;
+}
+
+.wheel {
+    border: 20px solid transparent;
+    border-top: 20px solid #fff;
+    border-bottom: 20px solid #fff;
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+}
+.center-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200%;
+    font-family: "Chalkduster", fantasy;
+}
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+a {
+    color: #eee;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
