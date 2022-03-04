@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const flash = require('connect-flash');
+const fs = require('fs');
 const connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
@@ -89,6 +90,15 @@ app.get('/logout', (request, response) => {
         response.end()
     }
 });
+
+app.get('/img', (request, response) => {
+	const x = path.join(__dirname + '/static/images/' + request.query.i + '.jpg');
+	if (fs.existsSync(x)) {
+		response.sendFile(x);
+	} else {
+		response.render('404');
+	}
+})
 
 app.get('*', (request, response) => {
 	response.render('404')
