@@ -23,7 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(flash());
-app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'pug');
 
 app.get('/', (request, response) => {
