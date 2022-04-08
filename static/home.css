@@ -1,6 +1,8 @@
-html, body {
+body {
     background-color: #121212;
     color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
 }
 
 .wheel {
@@ -18,6 +20,7 @@ html, body {
     width: 250px;
     height: 250px;
 }
+
 .center-home {
     position: absolute;
     top: 50%;
@@ -26,16 +29,9 @@ html, body {
     font-size: 200%;
     font-family: "Chalkduster", fantasy;
 }
+
 @keyframes rotate {
     to {
         transform: rotate(360deg);
     }
-}
-
-a {
-    color: #eee;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
 }

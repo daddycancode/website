@@ -23,10 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(flash());
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.get('/', (request, response) => {
-	response.render('index');
+	response.render('home', {
+		title: "Home",
+		css: "home"
+	})
     response.end();
 });
 
@@ -37,6 +40,8 @@ app.get('/login', (request, response) => {
 		//response.sendFile(path.join(__dirname + '/templates/login.html'));
         const mess = request.flash('info')
         response.render('login', {
+			title: "Login",
+			css: "login",
             message: mess
         })
 	}
@@ -67,6 +72,8 @@ app.post('/login', (request, response) => {
 app.get('/account', (request, response) => {
 	if (request.session.loggedin) {
 		response.render('account', {
+			title: "Account",
+			css: "account",
             name: request.session.username
         })
 	} else {
@@ -100,7 +107,10 @@ app.get('/img', (request, response) => {
 })
 
 app.get('*', (request, response) => {
-	response.render('404')
+	response.render('404', {
+		title: "404",
+		css: "404"
+	})
     response.end();
 });
 
