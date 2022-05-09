@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
+const md5 = require('md5');
 
 let db = new sqlite3.Database('./sqlite3.db', (err) => {
     if (err) {
@@ -16,18 +17,21 @@ let db = new sqlite3.Database('./sqlite3.db', (err) => {
 
 const createTable = () => {
     console.log('Creating database nodelogin ...');
-    const table = `
+    db.run(`
         CREATE TABLE IF NOT EXISTS nodelogin (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT,
         password TEXT)
-    `;
-    db.run(table);
-    const insertData = () => {
-        console.log("Inserting default data ...")
-        db.run('INSERT INTO nodelogin (username, password) VALUES (\'test\', \'password\')');
-    }
-    db.run(table, insertData);
+    `, (err) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            console.log("Inserting default data ...");
+            const insert = 'INSERT INTO nodelogin (username, password) VALUES (?, ?)';
+            const details = ["test", md5("password")];
+            db.run(insert, details);
+        }
+    });
 }
 
 db.close();

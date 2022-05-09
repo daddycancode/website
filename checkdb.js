@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
+const md5 = require('md5');
 
 let db = new sqlite3.Database('./sqlite3.db', (err) => {
     if (err) {
