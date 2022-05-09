@@ -1,10 +1,10 @@
 // Website
-const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const flash = require('connect-flash');
 const fs = require('fs');
+const path = require('path');
+const mysql = require('mysql');
 const connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
@@ -29,7 +29,7 @@ app.get('/', (request, response) => {
 	response.render('home', {
 		title: "Home",
 		css: "home"
-	})
+	});
     response.end();
 });
 
@@ -38,12 +38,12 @@ app.get('/login', (request, response) => {
 		response.redirect('/account');
 	} else {
 		//response.sendFile(path.join(__dirname + '/templates/login.html'));
-        const mess = request.flash('info')
+        const mess = request.flash('info');
         response.render('login', {
 			title: "Login",
 			css: "login",
             message: mess
-        })
+        });
 	}
 });
 
@@ -58,7 +58,7 @@ app.post('/login', (request, response) => {
 				request.session.username = username;
 				response.redirect('/account');
 			} else {
-                request.flash('info', 'Incorrect username OR password')
+                request.flash('info', 'Incorrect username OR password');
 			    response.redirect('/login');
 			}
 			response.end();
@@ -75,7 +75,7 @@ app.get('/account', (request, response) => {
 			title: "Account",
 			css: "account",
             name: request.session.username
-        })
+        });
 	} else {
 		response.redirect('/');
 	}
@@ -86,19 +86,19 @@ app.get('/logout', (request, response) => {
     if (request.session) {
         request.session.destroy(err => {
             if (err) {
-                response.status(400).send('Unable to log out')
+                response.status(400).send('Unable to log out');
             } else {
                 response.redirect('/');
             }
         });
     } else {
         response.redirect('/');
-        response.end()
+        response.end();
     }
 });
 
 app.get('/img', (request, response) => {
-	const x = path.join(__dirname + '/static/images/' + request.query.i + '.jpg');
+	const x = path.join(__dirname + '/static/images/' + request.query.img + '.jpg');
 	if (fs.existsSync(x)) {
 		response.sendFile(x);
 	} else {
@@ -110,7 +110,7 @@ app.get('*', (request, response) => {
 	response.render('404', {
 		title: "404",
 		css: "404"
-	})
+	});
     response.end();
 });
 
