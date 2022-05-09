@@ -11,9 +11,8 @@ let db = new sqlite3.Database('./sqlite3.db', (err) => {
                 console.log(err.message);
             }
         });
-
     }
-})
+});
 
 const createTable = () => {
     console.log('Creating database nodelogin ...');
@@ -26,12 +25,12 @@ const createTable = () => {
         if (err) {
             console.log(err.message);
         } else {
-            console.log("Inserting default data ...");
+            console.log('Inserting default data ...');
             const insert = 'INSERT INTO nodelogin (username, password) VALUES (?, ?)';
             const details = ["test", md5("password")];
             db.run(insert, details);
         }
     });
-}
+};
 
 db.close();

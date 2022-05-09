@@ -1,5 +1,4 @@
 const sqlite3 = require('sqlite3').verbose();
-const md5 = require('md5');
 
 let db = new sqlite3.Database('./sqlite3.db', (err) => {
     if (err) {
@@ -11,17 +10,16 @@ let db = new sqlite3.Database('./sqlite3.db', (err) => {
                 console.log(err.message);
             }
         });
-
     }
-})
+});
 
 const readDB = () => {
-    console.log("Read data from nodelogin ...");
-    db.all("SELECT * FROM nodelogin", function(err, rows) {
+    console.log('Read data from nodelogin ...');
+    db.all('SELECT * FROM nodelogin', (err, rows) => {
         rows.forEach((row) => {
             console.log(row.id + " : " + row.username + " : " + row.password);
         });
     });
-}
+};
 
 db.close();

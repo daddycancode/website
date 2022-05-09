@@ -4,14 +4,10 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const fs = require('fs');
 const path = require('path');
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : 'password',
-	database : 'nodelogin'
-});
 const app = express();
+const sqlite3 = require('sqlite3').verbose();
+let db = new sqlite3.Database('./sqlite3.db', (err) => { if (err) { console.log(err.message); } else { console.log('Connected to sqlite3 db.'); } });
+const md5 = require('md5');
 
 app.use(session({
 	secret: 'secret',
@@ -51,8 +47,8 @@ app.post('/login', (request, response) => {
 	let username = request.body.username;
 	let password = request.body.password;
 	if (username && password) {
-		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], (error, results, fields) => {
-			if (error) throw error;
+		db.all('SELECT * FROM nodelogin WHERE username = ? AND password = ?', [username, md5(password)], (err, results) => {
+			if (err) throw err;
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
