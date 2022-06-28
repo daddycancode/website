@@ -9,4 +9,12 @@ projects.get('/', (request, response) => {
     response.end();
 });
 
+projects.get('/wordle', (request, response) => {
+	response.render('projects/wordle', {
+		title: "Wordle",
+		css: "projects/wordle/wordle"
+	});
+    response.end();
+});
+
 module.exports = projects;

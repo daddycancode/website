@@ -27,6 +27,7 @@
     transform: translate(-50%, -50%);
     font-size: 150%;
     font-family: "Chalkduster", fantasy;
+    color: red;
 }
 
 @keyframes rotate {
