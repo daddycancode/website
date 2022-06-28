@@ -9,6 +9,9 @@ const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('./sqlite3.db', (err) => { if (err) { console.log(err.message); } else { console.log('Connected to sqlite3 db.'); } });
 const md5 = require('md5');
 
+const projects = require('./routes/projects');
+const account = require('./routes/account');
+
 app.use(session({
 	secret: 'secret',
     //cookie: { maxAge: 60000 },
@@ -20,6 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(flash());
 app.set('view engine', 'ejs');
+
+app.use('/projects', projects);
+app.use('/account', account);
 
 app.get('/', (request, response) => {
 	response.render('home', {
@@ -64,7 +70,7 @@ app.post('/login', (request, response) => {
 		response.end();
 	}
 });
-
+/*
 app.get('/account', (request, response) => {
 	if (request.session.loggedin) {
 		response.render('account', {
@@ -77,7 +83,7 @@ app.get('/account', (request, response) => {
 	}
     response.end();
 });
-
+*/
 app.get('/logout', (request, response) => {
     if (request.session) {
         request.session.destroy(err => {

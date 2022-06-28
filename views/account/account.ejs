@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head'); %>
+    <%- include('../partials/head'); %>
 </head>
 <body>
-    <%- include('partials/header'); %>
+    <%- include('../partials/header'); %>
     
-    <div>
+    <div id="account">
         <h1>You are logged in as: <%= name %></h1>
         <br>
         <p>Click <a href="/">HERE</a> to go home</p>
+        <p>Click <a href="/account/details">HERE</a> to go change your details</p>
         <p>Click <a href="/logout">HERE</a> to logout</p>
     </div>
     
-    <%- include('partials/footer'); %>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

@@ -1,0 +1,9 @@
+#account a {
+    color: #eee;
+    text-decoration: none;
+}
+
+#account a:hover {
+    text-decoration: underline;
+    color: #3274d6;
+}

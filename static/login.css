@@ -1,37 +1,33 @@
 * {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-    font-size: 16px;
 }
-body {
-    background-color: #121212;
-    color: #eee;
-}
-.login {
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-    font-size: 16px;
+
+#login {
     width: 400px;
     margin: 100px auto;
 }
-.login h1 {
+
+#login h1 {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     padding: 20px 0 20px 0;
     border-bottom: 1px solid #dee0e4;
 }
-.login p {
+
+#login p {
     text-align: center;
     color: #db2d2d;
     font-weight: bold;
 }
-.login form {
+
+#login form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
 }
-.login form label {
+
+#login form label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,25 +35,28 @@ body {
     height: 50px;
     background-color: #3274d6;
 }
-.login form input[type="password"], .login form input[type="text"] {
+
+#login form input[type="password"], #login form input[type="text"] {
     width: 310px;
     height: 50px;
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
     padding: 0 15px;
 }
-.login form input[type="submit"] {
+
+#login form input[type="submit"] {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
     background-color: #3274d6;
     border: 0;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 16px;
     color: #eee;
     transition: background-color 0.2s;
 }
-.login form input[type="submit"]:hover {
+
+#login form input[type="submit"]:hover {
     background-color: #2868c7;
     transition: background-color 0.2s;
 }
